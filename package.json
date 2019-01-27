@@ -1,5 +1,5 @@
 {
-  "name": "clock",
+  "name": "@bastienrobert/clock",
   "version": "1.0.0",
   "description": "Simple clock to get current time using delta-time",
   "main": "index.js",

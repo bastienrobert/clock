@@ -1,5 +1,7 @@
 # Clock
 
+[![npm version](https://badge.fury.io/js/%40bastienrobert%2Fclock.svg)](https://badge.fury.io/js/%40bastienrobert%2Fclock)
+
 [Demo](https://bastienrobert.github.io/clock) - [Demo with imports in Codesandbox](https://codesandbox.io/s/5q31xvmn4)
 
 Simple clock to get current time using delta-time.
@@ -7,6 +9,10 @@ Simple clock to get current time using delta-time.
 Developped to be used with really old browsers and with or without module bundler.
 
 ⚠ It hasn't been test in production for the moment.
+
+## Install
+
+You can install this package using NPM: `npm i @bastienrobert/clock`, or download the `index.js` file.
 
 ## How to use?
 
