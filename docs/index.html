@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section>
+      <div>
+        <span id="seconds"></span>
+        <span id="thousandth"></span>
+      </div>
+      <div class="controls">
+        <button id="start">Restart</button>
+        <button id="resume">Resume</button>
+        <button id="stop">Stop</button>
+      </div>
+    </section>
+
+    <script type="module">
+      import Clock from 'https://cdn.pika.dev/@bastienrobert/clock/^1.1.0'
+
+      const dom = {
+        seconds: document.getElementById('seconds'),
+        thousandth: document.getElementById('thousandth'),
+        controls: {
+          start: document.getElementById('start'),
+          resume: document.getElementById('resume'),
+          stop: document.getElementById('stop')
+        }
+      }
+      let seconds = 0
+      let thousandth = 0
+
+      const clock = new Clock()
+
+      function animate() {
+        requestAnimationFrame(animate)
+        clock.update()
+
+        seconds = ~~(clock.currentTime / 1000)
+        thousandth = ~~((clock.currentTime / 1000 - seconds) * 1000)
+
+        dom.seconds.innerHTML = seconds
+        dom.thousandth.innerHTML = thousandth
+      }
+
+      function controls(enable) {
+        if (enable) {
+          dom.controls.start.disabled = true
+          dom.controls.resume.disabled = true
+          dom.controls.stop.disabled = false
+        } else {
+          dom.controls.start.disabled = false
+          dom.controls.resume.disabled = false
+          dom.controls.stop.disabled = true
+        }
+      }
+
+      dom.controls.start.addEventListener('click', function() {
+        clock.start()
+        controls(true)
+      })
+
+      dom.controls.resume.addEventListener('click', function() {
+        clock.resume()
+        controls(true)
+      })
+
+      dom.controls.stop.addEventListener('click', function() {
+        clock.stop()
+        controls(false)
+      })
+
+      animate()
+    </script>
+  </body>
+</html>
